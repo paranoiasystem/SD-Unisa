@@ -2,6 +2,7 @@ package test;
 
 import exception.EmptyStackException;
 import exception.FullStackException;
+import stack.ArrayStack;
 import stack.NodeStack;
 import stack.Stack;
 
@@ -21,11 +22,27 @@ public class TestStackNode {
 		return (word.equals(invert(word)));
 		
 	}
-	public static boolean isBalanced(String s){
-		return false;
+	public static boolean isBalanced(String s) throws FullStackException, EmptyStackException{
+		Stack<Character> S = new NodeStack<Character>();
+		for(int i = 0; i < s.length(); i++){
+			if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{'){
+				S.push(s.charAt(i));
+			}
+			else if(s.charAt(i) == ')' || s.charAt(i) == ']' || s.charAt(i) == '}'){
+				if(S.isEmpety())
+					return false;
+				else
+					S.pop();
+			}
+		}
+		if(S.isEmpety())
+			return true;
+		else 
+			return false;
 	}
 	public static void main(String[] args) throws FullStackException, EmptyStackException{
 		System.out.println(invert("radar"));
-		System.out.println(isPalindrome(invert("radar")));		
+		System.out.println(isPalindrome(invert("radar")));	
+		System.out.println(isBalanced("{(f(g)])}"));
 	}
 }
