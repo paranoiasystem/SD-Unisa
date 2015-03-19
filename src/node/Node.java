@@ -14,6 +14,10 @@ public class Node <E>{
 		this.element = el;
 		this.next = n;
 		}
+	public Node() {
+		this.element = null;
+		this.next = null;
+	}
 	public E setElement(E newEl){
 		E tmp = this.element; 
 		this.element = newEl; 
