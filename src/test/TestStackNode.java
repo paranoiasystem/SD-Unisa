@@ -2,7 +2,6 @@ package test;
 
 import exception.EmptyStackException;
 import exception.FullStackException;
-import stack.ArrayStack;
 import stack.NodeStack;
 import stack.Stack;
 
